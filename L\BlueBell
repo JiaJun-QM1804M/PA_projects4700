@@ -1,0 +1,24 @@
+import csv
+class CalUtils:
+    def __init__(calAvgHeight , names , heights , totalstudentheight , totalstudentcount):
+        calAvgHeight.names = str(names)
+        calAvgHeight.heights = float(heights)
+        calAvgHeight.totalstudentheight = float(heights)
+        calAvgHeight.totalstudentcount = float(totalstudentcount)
+namesandweight = {"Maeda Jurina":1.70, "Matsui Rena":1.72, "Mitsumi watanabe":1.73, "Mayu Kashiwagi":1.74, "Adeline Goh":1.68, "JoeyGoh":1.69}
+a = input("add user yes or no:")
+while a == "yes":
+    names=input("enter new student name:")
+    try:
+        heights=float(input("enter student height(in meters):"))
+
+    except:
+        print("not numeric ")
+        exit()
+    a = input("do u want to add another user and his height? yes or no:")
+    namesandweight[names] = heights
+    print(namesandweight)
+fileoperator = csv.writer(open("listOfStudentHeight.txt ", "w"))
+for key, val in namesandweight.items():
+    with open("listOfStudentHeight.txt" , "a") as file:
+        file.write(f"\n{key}    {val}")
